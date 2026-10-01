@@ -1,42 +1,39 @@
+.turbo/
 .DS_Store
+Thumbs.db
 node_modules
 .worktrees
 .sst
-.env
-.idea
-.vscode
-.codex
-.claude/
-.kilo/
-.siaga/*
-!.siaga/skill/
-__MACOSX/
-*~
-playground
-tmp
-dist
-ts-dist
-.turbo
-**/.serena
-.serena/
-/result
-refs
-Session.vim
-siaga.json
-a.out
-target
-.scripts
-.direnv/
+.wrangler
 
-# Local dev files
-test-cases/
-opencode-dev
-logs/
-*.bun-build
-.skill-signing-key
+# Merge/patch residue
+*.orig
+*.rej
+
+# Build/pack output
+*.tgz
+public/sitemap.xml
 
 # Local throwaway test/eval harness (not committed)
 packages/siaga/test/proxy-eval/
 
 # Exported session transcripts and reports
-session-*.md
+
+*.rej
+
+# Build/pack output
+*.tgz
+**/public/sitemap.xml
+
+# Local throwaway test/eval harness (not committed)
+packages/siaga/test/proxy-eval/
+
+
+opencode-dev
+logs/
+*.log
+*.bun-build
+.skill-signing-key
+
+# Merge/patch residue
+*.orig
