@@ -1,0 +1,62 @@
+/*
+  Brutal shape layer. Color tokens live in themes/brutal.json; this file only
+  overrides geometry so the whole app hardens without touching a component.
+  Scoped to the theme id, so it activates and deactivates with the theme switch.
+*/
+
+html[data-theme="brutal"] {
+  --radius-xs: 0;
+  --radius-sm: 0;
+  --radius-md: 0;
+  --radius-lg: 0;
+  --radius-xl: 0;
+
+  --font-weight-regular: 700;
+  --font-weight-medium: 700;
+
+  /* Hard offset shadows: zero blur, zero spread, zero layout cost. */
+  --shadow-xs: 4px 4px 0 var(--border-base);
+  --shadow-md: 6px 6px 0 var(--border-base);
+  --shadow-lg: 8px 8px 0 var(--border-base);
+
+  /* Hairline separator, kept hairline so dense tables do not gain 4px per cell. */
+  --shadow-xxs-border: 0 0 0 1px var(--border-weak-base);
+  --shadow-xs-border-base: 0 0 0 1px var(--border-weak-base);
+
+  --shadow-xs-border: 0 0 0 2px var(--border-base), 4px 4px 0 var(--border-base);
+  --shadow-xs-border-select: 0 0 0 2px var(--border-selected), 4px 4px 0 var(--border-base);
+  --shadow-xs-border-hover: 0 0 0 2px var(--border-hover), 4px 4px 0 var(--border-base);
+
+  /* Two flat rings, no blur: still meets the 3:1 focus indicator requirement. */
+  --shadow-xs-border-focus:
+    0 0 0 2px var(--background-base), 0 0 0 4px var(--border-focus);
+  --shadow-xs-border-critical-base: 0 0 0 2px var(--border-critical-selected);
+  --shadow-xs-border-critical-focus:
+    0 0 0 2px var(--background-base), 0 0 0 4px var(--border-critical-selected);
+  --shadow-lg-border-base: 0 0 0 2px var(--border-base), 8px 8px 0 var(--border-base);
+}
+
+/*
+  Instant state changes. `animation` is left alone on purpose: spinners, toasts
+  and skeleton reveals must keep running or they look like a frozen UI.
+*/
+html[data-theme="brutal"] *,
+html[data-theme="brutal"] *::before,
+html[data-theme="brutal"] *::after {
+  transition-duration: 0s !important;
+  transition-delay: 0s !important;
+}
+
+html[data-theme="brutal"] :focus-visible {
+  outline: 2px solid var(--border-focus);
+  outline-offset: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html[data-theme="brutal"] *,
+  html[data-theme="brutal"] *::before,
+  html[data-theme="brutal"] *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}

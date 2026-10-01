@@ -1319,6 +1319,7 @@ export const SessionRoutes = lazy(() =>
               // that accrued while this prompt waited in the queue — other credentials and
               // other values seen on the same endpoint shape in the meantime.
               const promptText = buildPrompt()
+              let failed = false
               try {
                 await SessionPrompt.prompt({
                   sessionID,
@@ -1336,8 +1337,13 @@ export const SessionRoutes = lazy(() =>
                   before,
                   after: IngestSummary.snapshot(sessionID),
                 })
+              } catch (err) {
+                failed = true
+                log.error("ingest failed", { sessionID, requestId: req.id, error: err })
               } finally {
-                Request.updateStatus({ id: req.id, status: "processed" })
+                // "queued" on failure so the endpoint is not stranded in "processing" forever
+                // (IngestQueue swallows the rejection, so nothing else resets this row).
+                Request.updateStatus({ id: req.id, status: failed ? "queued" : "processed" })
               }
             })
           }

@@ -11,7 +11,7 @@
 
   if (themeId === "cs-1") return
 
-  var css = localStorage.getItem("siaga-theme-css-" + themeId + "-" + mode)
+  var css = localStorage.getItem("siaga-theme-css-" + mode)
   if (css) {
     var style = document.createElement("style")
     style.id = "cs-theme-preload"

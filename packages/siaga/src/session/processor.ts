@@ -172,7 +172,7 @@ export namespace SessionProcessor {
                           input: value.input,
                         },
                         always: [value.toolName],
-                        ruleset: agent.permission,
+                        ruleset: agent?.permission ?? [],
                       })
                     }
                   }

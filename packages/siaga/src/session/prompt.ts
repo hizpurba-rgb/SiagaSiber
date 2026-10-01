@@ -643,9 +643,11 @@ export namespace SessionPrompt {
         continue
       }
 
-      // normal processing
-      const agent = await Agent.get(lastUser.agent)
-      const maxSteps = agent.steps ?? Infinity
+      // normal processing — `lastUser.agent` may name a tool-scoped pseudo-agent that is not
+      // in the registry (e.g. "hackbrowser", "proxy-agent" messages injected by tools). Falling
+      // back to the default agent keeps the loop alive instead of crashing on undefined.
+      const agent = await Agent.get(lastUser.agent) ?? (await Agent.get(await Agent.defaultAgent()))
+      const maxSteps = agent?.steps ?? Infinity
       const isLastStep = step >= maxSteps
       // Hard backstop (loop-termination Layer 1): the forced wrap-up turn strips
       // tools (below) so the model finishes with text. If a provider STILL returned a

@@ -552,7 +552,11 @@ export default function Page() {
       () => {
         const msg = lastUserMessage()
         if (!msg) return
-        if (msg.agent) local.agent.set(msg.agent)
+        // Only adopt PRIMARY agents. Ingest/tool messages are stamped with tool-scoped
+        // pseudo-agents ("proxy-agent", "hackbrowser", …) whose permissions DENY
+        // report_vulnerability/todowrite — adopting them silently emptied the vuln/todo tabs.
+        const primary = local.agent.list()
+        if (msg.agent && primary.some((a) => a.name === msg.agent)) local.agent.set(msg.agent)
         if (msg.model) local.model.set(msg.model)
       },
     ),

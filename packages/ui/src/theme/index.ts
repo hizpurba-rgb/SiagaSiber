@@ -43,4 +43,8 @@ export {
   shadesOfPurpleTheme,
   nightowlTheme,
   vesperTheme,
+  carbonfoxTheme,
+  gruvboxTheme,
+  auraTheme,
+  brutalTheme,
 } from "./default-themes"

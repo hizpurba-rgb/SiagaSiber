@@ -1001,7 +1001,9 @@ export namespace Provider {
       if (disabled.has(providerID)) continue
       const data = database[providerID]
       if (!data) {
-        log.error("Provider does not exist in model list " + providerID)
+        // Custom loader for a provider that is not in the bundled model catalog — normal when
+        // the catalog entry was removed or the user renamed the provider. Not an error.
+        log.debug("custom provider loader skipped — not in model list " + providerID)
         continue
       }
       const result = await fn(data)

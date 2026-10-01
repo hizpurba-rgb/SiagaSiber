@@ -1,3 +1,4 @@
+import { existsSync } from "node:fs"
 import path from "path"
 import { Hono } from "hono"
 import { describeRoute, validator, resolver } from "hono-openapi"
@@ -429,6 +430,7 @@ export const MethodologyRoutes = lazy(() =>
         const { sessionID } = c.req.valid("param")
         const rootSession = Session.root(sessionID)
         const reportsDir = path.join(Instance.worktree, ".siaga", "reports")
+        if (!existsSync(reportsDir)) return c.json({ error: "No reports found" }, 404)
 
         const glob = new Bun.Glob("report-*.md")
         const files = [...glob.scanSync({ cwd: reportsDir, absolute: true })].sort().reverse()

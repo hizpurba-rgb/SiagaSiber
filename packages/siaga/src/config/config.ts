@@ -96,11 +96,8 @@ export namespace Config {
         command: ["npx", "-y", "osint-mcp-server"],
         enabled: false,
       },
-      "cloud-audit": {
-        type: "local",
-        command: ["npx", "-y", "cloud-audit-mcp"],
-        enabled: false,
-      },
+      // NOTE: no "cloud-audit" MCP entry — `cloud-audit-mcp` is not published on npm (404) and
+      // cloud auditing is already covered by the native `cloud_audit` tool (src/tool/cloud-audit.ts).
       // --- Tier 2: Extended Intelligence ---
       darknet: {
         type: "local",
