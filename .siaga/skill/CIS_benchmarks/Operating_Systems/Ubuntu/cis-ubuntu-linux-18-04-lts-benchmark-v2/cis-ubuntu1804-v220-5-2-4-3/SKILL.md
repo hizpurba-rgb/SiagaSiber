@@ -1,6 +1,7 @@
 ---
+
 name: cis-ubuntu1804-v220-5-2-4-3
-description:
+description: "5.2.4.3 Ensure only authorized groups are assigned ownership of audit log files"
 version: "2.2.0"
 category: cis-logging
 tags: [cis, ubuntu, linux, ubuntu-18.04, auditing, auditd]
@@ -9,8 +10,8 @@ target:
   platform: linux
   version: "18.04"
 severity_boost: {}
-sha256: f7415b1e81b3edc168aea57e34e66369fd1e8debd2afff5768143b4f6341fdf1
-signature: Y7Nza5xYYABFQdCY767ciWCQTPQ2YNsDtiKu7Q0D4sm/NiZSKJv4qdfUBSoDt350dp229/WMv1vFm/klJ72CCw==
+sha256: 64c3b069a86943a6fea15334baf79c0b2cb911fb88b24e840672269950243fff
+signature: qlzD4XV+xDE9xc2UxSugPUPwL9Y0rgOpngdP3EtoO3tFJx7tv2sBuJf4VC1QMgls6wPHHevqHuzmSOynFM/IDQ==
 signed_by: siaga-official
 ---
 

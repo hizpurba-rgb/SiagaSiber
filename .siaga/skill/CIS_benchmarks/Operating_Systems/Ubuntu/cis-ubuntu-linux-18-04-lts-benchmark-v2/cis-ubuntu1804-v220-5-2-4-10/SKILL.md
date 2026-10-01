@@ -1,6 +1,7 @@
 ---
+
 name: cis-ubuntu1804-v220-5-2-4-10
-description:
+description: "5.2.4.10 Ensure audit tools belong to group root"
 version: "2.2.0"
 category: cis-logging
 tags: [cis, ubuntu, linux, ubuntu-18.04, auditing, auditd]
@@ -9,8 +10,8 @@ target:
   platform: linux
   version: "18.04"
 severity_boost: {}
-sha256: c75df81c15e1dd493d02899f38f5e01cc8fabdc247437c579ecf0f7622c5e44a
-signature: Jyom6QxLc6t6vZ7yLO4uSx9+bPyjfNyk09MVG2BaAwGiUZAQ2sdnwX0AGNVTMypEbaDDJrNMVuZ263XndRYZDQ==
+sha256: 33b648d74105ea2d077aaab605aa47a83cb3148b3bdb8e43049a7bd46c14c2e9
+signature: xkj/aEtZ4BystBvfjSrcdsxwDBtGZbhD5Cn2ts4TyY6hohbqdBJIoXsnqY2iUKq9Y9aeK13hTSSpXYRf96j2Cw==
 signed_by: siaga-official
 ---
 

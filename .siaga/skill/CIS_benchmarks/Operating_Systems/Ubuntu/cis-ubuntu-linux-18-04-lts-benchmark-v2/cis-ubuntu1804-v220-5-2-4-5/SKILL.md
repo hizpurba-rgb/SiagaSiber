@@ -1,6 +1,7 @@
 ---
+
 name: cis-ubuntu1804-v220-5-2-4-5
-description:
+description: "5.2.4.5 Ensure audit configuration files are 640 or more restrictive"
 version: "2.2.0"
 category: cis-logging
 tags: [cis, ubuntu, linux, ubuntu-18.04, auditing, auditd]
@@ -9,8 +10,8 @@ target:
   platform: linux
   version: "18.04"
 severity_boost: {}
-sha256: 25aa3d1d3d4e58ba7a1269f391c919afeac6b0c17ad6456e4917306a19eff34a
-signature: l9oH5GDD7jVetsakxFirVhXKG+0CrxD0mx9489N2BPwWs1XPkWnY4iClhG8wiz7PzmAHAH3ssUhQxQsVIfj4AA==
+sha256: b8e58070c212cf8eda007ee7da8d166a1ded7c6fb644717bbfb766c4f386b36c
+signature: 6vY/7JjN2qf6yj1BbTNiJLQK0U8XE7tKHOQRoxsZUfvLv7t6PcwGzZPtZye9jGk1imPLGrT87DbwNhLUGYUqCA==
 signed_by: siaga-official
 ---
 

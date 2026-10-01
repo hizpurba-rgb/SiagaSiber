@@ -1,12 +1,14 @@
 ---
+
 name: cis-ubuntu2004-v300-6-3-4-8
+description: "6.3.4.8 Ensure audit tools mode is configured (Automated)"
 skill: cis-ubuntu2004-v300-6-3-4-8
 category: cis-logging
 version: "3.0.0"
 tags: [cis, ubuntu, linux, ubuntu-20.04, auditing, auditd]
 severity_boost: {}
-sha256: d9cc84b5b65eb00758cb89163ee471507f903be0da5224ef72f458b3ab19a50d
-signature: 0UrZNDH7Ue3UwgMGgmeBtLhOz5hFUhvUfxR5ysSdb+dWhu7aLXwzQjxVkyTmkaGp3Mr+Q/PJMzO/9De3WLLCAQ==
+sha256: c43aad3cf4b18f91e34c65a77e9d4c124df25b996bc3ed3447683040d36edd93
+signature: PWfObzMRYi3+FGPYTIwDi8Y32j59J9h0iY6kLcyqhe9hRs9pg1XNHIBa9bTpcxuJgzMG5TTZU1eY/EUpa5dHAg==
 signed_by: siaga-official
 ---
 

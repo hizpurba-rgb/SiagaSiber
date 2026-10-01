@@ -1,6 +1,7 @@
 ---
+
 name: cis-ubuntu1804-v220-5-2-4-6
-description:
+description: "5.2.4.6 Ensure audit configuration files are owned by root"
 version: "2.2.0"
 category: cis-logging
 tags: [cis, ubuntu, linux, ubuntu-18.04, auditing, auditd]
@@ -9,8 +10,8 @@ target:
   platform: linux
   version: "18.04"
 severity_boost: {}
-sha256: ea95442ac792e043922f7696ba43007f976a362f4525532d1688e8ed6967db44
-signature: EtzBDrW1d/jIOm6nhImTW/C6NBn66IJtJf+udg27rWj++ZtxYmJd080Vl7xxstCzy1y8oVlw06PpsjBTGlN4Ag==
+sha256: c6e5bb6330d47132034deade8ca0749abd64875ce2770b64b0f44ea7d3d80f3b
+signature: GBm7P34prqNLMo5hieWqJKJ1OcJZzitW+r0+JwVPbTY4rpSvYQ3YU/XdYkz609Ww/cDvuuzPaeWlY4wSzbncAA==
 signed_by: siaga-official
 ---
 

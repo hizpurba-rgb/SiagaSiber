@@ -1,12 +1,14 @@
 ---
+
 name: cis-ubuntu2004-v300-6-3-4-3
+description: "6.3.4.3 Ensure audit log files group owner is configured (Automated)"
 skill: cis-ubuntu2004-v300-6-3-4-3
 category: cis-logging
 version: "3.0.0"
 tags: [cis, ubuntu, linux, ubuntu-20.04, auditing, auditd]
 severity_boost: {}
-sha256: cbf34fd63d027f40bcb5fbe4eacf18adcb480c2e3a7852079cf7efde6321edf5
-signature: jE6iuGYmInGf9vdZ8Rmc9q1q3Z1If61t6I5vGvykuy1BDIujVHbXLNpwR3YSjCfHtivb2z0KZmSYC6imMujGBw==
+sha256: a5fb62485411a48e5a932adee1c317e50c9bd08d3132079279d50bd9e147115c
+signature: pVEDwdAQEiGrBnfcYUbq695qjdpN3dFHYxxsHDzf/WHtmDrv9EYTvWPlABGzOhRyZuVUTGU909naK+aMjvcRAg==
 signed_by: siaga-official
 ---
 

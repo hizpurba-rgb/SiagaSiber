@@ -1,6 +1,7 @@
 ---
+
 name: cis-ubuntu1804-v220-5-2-4-11
-description:
+description: "5.2.4.11 Ensure cryptographic mechanisms are used to protect the integrity of audit tools"
 version: "2.2.0"
 category: cis-logging
 tags: [cis, ubuntu, linux, ubuntu-18.04, auditing, auditd]
@@ -9,8 +10,8 @@ target:
   platform: linux
   version: "18.04"
 severity_boost: {}
-sha256: 6760b2216ab052638e1d07df0901c1be390d4d9ebe72133453b2aecf1893dc7f
-signature: 7dI2kM1kEblFvJYelgyNHXQ1tywVSNsvgbcL0t4ygnPdWZtpdm6so1brp1HqKeSIop/AjM7Qj8+jFNjAk7KgDQ==
+sha256: 416661e992062b254a24e775539c37eace0adefaffce211cc0a0fdce3829b21b
+signature: ypyLnUu+Cd1xzJcQVRpFr57TksIlDspIUSr0y3yF4YJ2g/m1A4trSVaQEXEYOM5Ea4hJv+4/yavvkuD6mdVRAQ==
 signed_by: siaga-official
 ---
 

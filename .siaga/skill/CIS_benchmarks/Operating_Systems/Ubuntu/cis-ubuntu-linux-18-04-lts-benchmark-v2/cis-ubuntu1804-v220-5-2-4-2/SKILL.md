@@ -1,6 +1,7 @@
 ---
+
 name: cis-ubuntu1804-v220-5-2-4-2
-description:
+description: "5.2.4.2 Ensure only authorized users own audit log files"
 version: "2.2.0"
 category: cis-logging
 tags: [cis, ubuntu, linux, ubuntu-18.04, auditing, auditd]
@@ -9,8 +10,8 @@ target:
   platform: linux
   version: "18.04"
 severity_boost: {}
-sha256: eef3d26f150aa8d0ec5299c838f6a3d5230a75b0d7431df12f930c9676bbe044
-signature: MsCxGm3geDSa2CP4MIrCK4e9xgyvgdv/8kkJSJcnEfV1hV53ratiwkM2AMC+C5gDLkpNORCcU3UQWm4fF/kBCA==
+sha256: 774767b3cd46f76842721b22e27fbe6c256200f40ec90d02a9b0ca685ed44772
+signature: 4L8MeHzXs/9Yt4M0xVQo7pp+Ex8qSniiCNOQQXE52Qj55pgiCCaU5tpfd9SEFLSpNe8DRuqGgwJmEQpNtJavBA==
 signed_by: siaga-official
 ---
 

@@ -1,5 +1,7 @@
 ---
+
 name: cis-ubuntu2004-v300-6-3-3-21
+description: "CIS Ubuntu 20.04 LTS Benchmark v3.0.0 - 6.3.3.21"
 version: "3.0.0"
 tags:
   - cis
@@ -10,8 +12,8 @@ tags:
   - auditd
 category: cis-logging
 severity_boost: {}
-sha256: fbde586565a664869ade4b9abca96df6a954ecba26f667fee08d64d685c7b61a
-signature: 8o/yeZMBUKKSIhc/pEDBTYrzASHdRN3D8rmOZVX0RDGo+TpbuODDmGZ9OFs/WARwOyXcrxNBQpmmMjO/2nYWDg==
+sha256: f6f27477d3e5983d1f7c799f5daf5a7398618a9afea49429b0ed4765a1c34ac5
+signature: 3CyDdpvOdMOmFnMJAmdXRbsJ+2q4xY+U1j5GP7h28mEdAmge2AWJ+jWjD86bYjlOzC4bmjA7G3CJT+Vqh3opBw==
 signed_by: siaga-official
 ---
 

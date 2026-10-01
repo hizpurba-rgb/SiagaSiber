@@ -1,6 +1,7 @@
 ---
+
 name: cis-ubuntu1804-v220-5-2-4-1
-description:
+description: "5.2.4.1 Ensure audit log files are mode 0640 or less permissive"
 version: "2.2.0"
 category: cis-logging
 tags: [cis, ubuntu, linux, ubuntu-18.04, auditing, auditd]
@@ -9,8 +10,8 @@ target:
   platform: linux
   version: "18.04"
 severity_boost: {}
-sha256: 2b284594ab545003aa4cf4eea408a7345e62e8d205370a409c4207f3abb18aa8
-signature: aLXgBOg6kffat8YOePEafOmXMhAq1aC8REU5lgmLr9gwHTGYkSVYaZ/bRzWTPuIT/kX+O6W0vbQYpIGcYAzVAQ==
+sha256: dfd503a11ed9340631459789f6c75bf2ffc124c349e1909dd26df03c1314d4a1
+signature: wEXCjdLA/FBBp4kzCJKAP96fPRex0TNYZHum+WmWEmBjww0RE6Ns+bJGA5oaM7WWn7kawioY7oK9Qw8BFwd/Bw==
 signed_by: siaga-official
 ---
 

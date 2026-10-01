@@ -1,6 +1,7 @@
 ---
+
 name: cis-ubuntu1804-v220-5-2-4-4
-description:
+description: "5.2.4.4 Ensure the audit log directory is 0750 or more restrictive"
 version: "2.2.0"
 category: cis-logging
 tags: [cis, ubuntu, linux, ubuntu-18.04, auditing, auditd]
@@ -9,8 +10,8 @@ target:
   platform: linux
   version: "18.04"
 severity_boost: {}
-sha256: bf6a88a064540d6f6249f898e5f1e25b046bf204686e2e12a976b4a9d1b288f2
-signature: OisnlXkGPqcstMyIZwVoMEb9vZTG0wQyJRRVg4ECP0lO34sBUKGqZAMIdnZ4XM/FRVVlKa5tNDpE8PYm19pjBA==
+sha256: bc315cace58930bff0aa180680e9e8827c92bda749074c9bb65ad3478211c29b
+signature: 8ozqD07DxJHZ72oBjX9nxYtmG5XdxUkJWUheAvsuA3DRnih2XQJaRHD4fBlNSrQpyMhQQsa6EQRy5YjKbmjdCg==
 signed_by: siaga-official
 ---
 

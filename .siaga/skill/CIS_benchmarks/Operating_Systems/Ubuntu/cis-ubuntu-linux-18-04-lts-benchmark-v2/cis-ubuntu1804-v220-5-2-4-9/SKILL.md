@@ -1,6 +1,7 @@
 ---
+
 name: cis-ubuntu1804-v220-5-2-4-9
-description:
+description: "5.2.4.9 Ensure audit tools are owned by root"
 version: "2.2.0"
 category: cis-logging
 tags: [cis, ubuntu, linux, ubuntu-18.04, auditing, auditd]
@@ -9,8 +10,8 @@ target:
   platform: linux
   version: "18.04"
 severity_boost: {}
-sha256: f182ae1af952942d8e0b741bc9023c4f6b7e661120171a2b3e1abfb239429e25
-signature: AGNvnU6ZBCk8bWE6CBpYUYd5VIs1SXej7euRrx4hOf1F1m41PU0gcNa46BF54nngxLfq7SRoN9YCcXhWlIQrCg==
+sha256: 03f5118d8dcfc4f7bb3f3ec16bbf73c556086fa168dbb0def7b88a926cb63665
+signature: BgtvwxC7BwF9rSDsbC+vFd93gFWymX788RAJDaWiz91aBM+QkxxCl9xy6CJ+4MkM7ne4eCYRZyUVBJcIQkFRAg==
 signed_by: siaga-official
 ---
 

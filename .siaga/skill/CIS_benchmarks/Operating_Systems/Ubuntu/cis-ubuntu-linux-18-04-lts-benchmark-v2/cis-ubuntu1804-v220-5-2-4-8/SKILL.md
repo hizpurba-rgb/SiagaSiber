@@ -1,6 +1,7 @@
 ---
+
 name: cis-ubuntu1804-v220-5-2-4-8
-description:
+description: "5.2.4.8 Ensure audit tools are 755 or more restrictive"
 version: "2.2.0"
 category: cis-logging
 tags: [cis, ubuntu, linux, ubuntu-18.04, auditing, auditd]
@@ -9,8 +10,8 @@ target:
   platform: linux
   version: "18.04"
 severity_boost: {}
-sha256: a8f2e5bb112fe65789b3fa37085f77293eebaa491e38087b668cea0c0c2294e6
-signature: DiJjJk6LlJJ4M0YhUqKaKhXpjt+hO48W5+WZchqNFwWRVYNmirlOvj65KHKNQM8bLwBOBrOQDZJCF37C5MJpAQ==
+sha256: d62ece9132800543c57fe5633c58752d539f32414efeba5a0f362636c6308b34
+signature: VhX27ccjhFnT1c4tqxV8G11Y75UrekG/Da6ocfPBaIJkdLiH6E9ee4GSVS6Wty5+4L1RbtqkBh6eESAS6fO3CA==
 signed_by: siaga-official
 ---
 
