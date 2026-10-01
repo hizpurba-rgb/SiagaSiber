@@ -1,0 +1,62 @@
+---
+name: cis-tomcat7-v110-4.7
+description: "Restrict access to Tomcat web application directory"
+category: cis-tomcat
+version: "1.1.0"
+author: siaga-official
+tags: [cis, tomcat, tomcat-7, file-permissions, access-control, webapps]
+cis_id: "4.7"
+cis_benchmark: "CIS Apache Tomcat 7 Benchmark v1.1.0"
+tech_stack: [tomcat, java]
+cwe_ids: []
+chains_with: []
+prerequisites: []
+severity_boost: {}
+sha256: dc001a7a5936ecb75d7c02aaeba9e3a96c5ae320d9f6d02b2347459c3296e38e
+signature: O4LQlxdXri/cPOa4lk/2kW8iLE1v/FfwRsbUx1gQgSL8jU/TGNFWAImtx+k6sUM8sSXMAhyhYqyvVs+BmhH+AQ==
+signed_by: siaga-official
+---
+
+# CIS Apache Tomcat 7 Benchmark v1.1.0 - Control 4.7
+
+## Profile Applicability
+
+- Level 1
+
+## Description
+
+Restrict access to Tomcat web application directory
+
+**Note**: This is an auto-generated skeleton. Please refer to the CIS Apache Tomcat 7 Benchmark v1.1.0 PDF (pages 9-90) for complete details including:
+
+- Full description and rationale
+- Detailed audit procedures with exact commands
+- Step-by-step remediation instructions
+- Impact analysis
+- Default values
+- References
+
+## Audit Procedure
+
+Refer to CIS Apache Tomcat 7 Benchmark v1.1.0 - Section 4.7
+
+## Remediation
+
+Refer to CIS Apache Tomcat 7 Benchmark v1.1.0 - Section 4.7
+
+## References
+
+- CIS Apache Tomcat 7 Benchmark v1.1.0
+- https://www.cisecurity.org/
+
+## CIS Controls
+
+| CIS Control | Description                 |
+| ----------- | --------------------------- |
+| Version 7   | Refer to benchmark document |
+| Version 8   | Refer to benchmark document |
+
+## Assessment Status
+
+- **Scored**: Scored
+- **Profile**: Level 1

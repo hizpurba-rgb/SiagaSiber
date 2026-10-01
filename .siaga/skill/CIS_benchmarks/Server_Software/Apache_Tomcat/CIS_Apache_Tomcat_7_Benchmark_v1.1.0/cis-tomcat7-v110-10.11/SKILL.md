@@ -1,0 +1,62 @@
+---
+name: cis-tomcat7-v110-10.11
+description: "Configure maxHttpHeaderSize"
+category: cis-tomcat
+version: "1.1.0"
+author: siaga-official
+tags: [cis, tomcat, tomcat-7, dos, http-headers, resource-limits]
+cis_id: "10.11"
+cis_benchmark: "CIS Apache Tomcat 7 Benchmark v1.1.0"
+tech_stack: [tomcat, java]
+cwe_ids: []
+chains_with: []
+prerequisites: []
+severity_boost: {}
+sha256: 69a02eb0fe8452808c4963e3e6c654022a8009a639ce18f38ac69e1899c7782d
+signature: Fc/hGgAkvl/LK8UVredLYv4Mq1Clm5eZKfhGwSheR3vsxvS5VFAgOmeoYG9UUW1xNCOkz8nqGiDmczxpr0AhAQ==
+signed_by: siaga-official
+---
+
+# CIS Apache Tomcat 7 Benchmark v1.1.0 - Control 10.11
+
+## Profile Applicability
+
+- Level 2
+
+## Description
+
+Configure maxHttpHeaderSize
+
+**Note**: This is an auto-generated skeleton. Please refer to the CIS Apache Tomcat 7 Benchmark v1.1.0 PDF (pages 9-90) for complete details including:
+
+- Full description and rationale
+- Detailed audit procedures with exact commands
+- Step-by-step remediation instructions
+- Impact analysis
+- Default values
+- References
+
+## Audit Procedure
+
+Refer to CIS Apache Tomcat 7 Benchmark v1.1.0 - Section 10.11
+
+## Remediation
+
+Refer to CIS Apache Tomcat 7 Benchmark v1.1.0 - Section 10.11
+
+## References
+
+- CIS Apache Tomcat 7 Benchmark v1.1.0
+- https://www.cisecurity.org/
+
+## CIS Controls
+
+| CIS Control | Description                 |
+| ----------- | --------------------------- |
+| Version 7   | Refer to benchmark document |
+| Version 8   | Refer to benchmark document |
+
+## Assessment Status
+
+- **Scored**: Scored
+- **Profile**: Level 2

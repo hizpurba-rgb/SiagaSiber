@@ -1,0 +1,62 @@
+---
+name: cis-tomcat7-v110-6.4
+description: "Ensure secure is set to true only for SSL-enabled Connectors"
+category: cis-tomcat
+version: "1.1.0"
+author: siaga-official
+tags: [cis, tomcat, tomcat-7, ssl-tls, connectors, security-context]
+cis_id: "6.4"
+cis_benchmark: "CIS Apache Tomcat 7 Benchmark v1.1.0"
+tech_stack: [tomcat, java]
+cwe_ids: []
+chains_with: []
+prerequisites: []
+severity_boost: {}
+sha256: c23529f5daa2f36741bfabb75c3e7d89f500eac6499abfc0330c93cc0ac96095
+signature: 6kDIHNJOoR80Y0Pwif0oYgck97fx+nsHEnrJXFX7DjJ2dqHDRg7oc0S97bNBjCwIH/m3YOB/S5Cp+A2Y8ArWBw==
+signed_by: siaga-official
+---
+
+# CIS Apache Tomcat 7 Benchmark v1.1.0 - Control 6.4
+
+## Profile Applicability
+
+- Level 1
+
+## Description
+
+Ensure secure is set to true only for SSL-enabled Connectors
+
+**Note**: This is an auto-generated skeleton. Please refer to the CIS Apache Tomcat 7 Benchmark v1.1.0 PDF (pages 9-90) for complete details including:
+
+- Full description and rationale
+- Detailed audit procedures with exact commands
+- Step-by-step remediation instructions
+- Impact analysis
+- Default values
+- References
+
+## Audit Procedure
+
+Refer to CIS Apache Tomcat 7 Benchmark v1.1.0 - Section 6.4
+
+## Remediation
+
+Refer to CIS Apache Tomcat 7 Benchmark v1.1.0 - Section 6.4
+
+## References
+
+- CIS Apache Tomcat 7 Benchmark v1.1.0
+- https://www.cisecurity.org/
+
+## CIS Controls
+
+| CIS Control | Description                 |
+| ----------- | --------------------------- |
+| Version 7   | Refer to benchmark document |
+| Version 8   | Refer to benchmark document |
+
+## Assessment Status
+
+- **Scored**: Scored
+- **Profile**: Level 1

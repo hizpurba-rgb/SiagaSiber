@@ -1,0 +1,74 @@
+name: "siaga GitHub Action"
+description: "Run siaga in GitHub Actions workflows"
+branding:
+  icon: "code"
+  color: "orange"
+
+inputs:
+  model:
+    description: "Model to use"
+    required: true
+
+  agent:
+    description: "Agent to use. Must be a primary agent. Falls back to default_agent from config or 'build' if not found."
+    required: false
+
+  share:
+    description: "Share the siaga session (defaults to true for public repos)"
+    required: false
+
+  prompt:
+    description: "Custom prompt to override the default prompt"
+    required: false
+
+  use_github_token:
+    description: "Use GITHUB_TOKEN directly instead of SiagaSiber App token exchange. When true, skips OIDC and uses the GITHUB_TOKEN env var."
+    required: false
+    default: "false"
+
+  mentions:
+    description: "Comma-separated list of trigger phrases (case-insensitive). Defaults to '/siaga,/oc'"
+    required: false
+
+  oidc_base_url:
+    description: "Base URL for OIDC token exchange API. Only required when running a custom GitHub App install. Defaults to https://api.siagasiber.id"
+    required: false
+
+runs:
+  using: "composite"
+  steps:
+    - name: Get siaga version
+      id: version
+      shell: bash
+      run: |
+        VERSION=$(curl -sf https://api.github.com/repos/siagasiber/SiagaSiber/releases/latest | grep -o '"tag_name": *"[^"]*"' | cut -d'"' -f4)
+        echo "version=${VERSION:-latest}" >> $GITHUB_OUTPUT
+
+    - name: Cache siaga
+      id: cache
+      uses: actions/cache@v4
+      with:
+        path: ~/.siaga/bin
+        key: siaga-${{ runner.os }}-${{ runner.arch }}-${{ steps.version.outputs.version }}
+
+    - name: Install siaga
+      if: steps.cache.outputs.cache-hit != 'true'
+      shell: bash
+      run: curl -fsSL https://siagasiber.id/install | bash
+
+    - name: Add siaga to PATH
+      shell: bash
+      run: echo "$HOME/.siaga/bin" >> $GITHUB_PATH
+
+    - name: Run siaga
+      shell: bash
+      id: run_siaga
+      run: siaga github run
+      env:
+        MODEL: ${{ inputs.model }}
+        AGENT: ${{ inputs.agent }}
+        SHARE: ${{ inputs.share }}
+        PROMPT: ${{ inputs.prompt }}
+        USE_GITHUB_TOKEN: ${{ inputs.use_github_token }}
+        MENTIONS: ${{ inputs.mentions }}
+        OIDC_BASE_URL: ${{ inputs.oidc_base_url }}

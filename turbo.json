@@ -1,0 +1,20 @@
+{
+  "$schema": "https://turborepo.com/schema.json",
+  "globalEnv": ["CI", "SIAGA_DISABLE_SHARE"],
+  "globalPassThroughEnv": ["CI", "SIAGA_DISABLE_SHARE"],
+  "tasks": {
+    "typecheck": {},
+    "build": {
+      "dependsOn": ["^build"],
+      "outputs": ["dist/**"]
+    },
+    "siaga#test": {
+      "dependsOn": ["^build"],
+      "outputs": []
+    },
+    "@siaga-siber/app#test": {
+      "dependsOn": ["^build"],
+      "outputs": []
+    }
+  }
+}

@@ -1,0 +1,19 @@
+# SiagaSiber Code Owners
+
+# Core CLI & agents
+packages/siaga/            @badchars
+packages/siaga/src/agent/  @badchars
+
+# Security knowledge base & skills
+knowledge/                       @badchars
+.siaga/skill/              @badchars
+
+# Web & Desktop
+packages/app/                    @badchars
+packages/desktop/                @badchars
+
+# MCP Kali
+packages/mcp-kali/               @badchars
+
+# Infrastructure
+.github/                         @badchars

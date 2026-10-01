@@ -1,0 +1,10 @@
+{
+  "$schema": "https://siagasiber.id/config.json",
+  "provider": {
+    "siaga": {
+      "options": {}
+    }
+  },
+  "mcp": {
+  }
+}

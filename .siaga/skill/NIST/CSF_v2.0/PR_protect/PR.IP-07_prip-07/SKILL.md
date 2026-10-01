@@ -1,0 +1,104 @@
+---
+name: "PR.IP-07_prip-07"
+description: "Protection processes are improved"
+category: "authorization"
+version: "2.0"
+author: "siaga-official"
+tags:
+  - nist
+  - csf
+  - v2.0
+  - pr-ip-07
+  - pr
+  - subcategory
+tech_stack:
+  - aws
+  - azure
+  - gcp
+  - linux
+  - windows
+cwe_ids:
+  - CWE-284
+chains_with: []
+prerequisites:
+  - Information Protection Processes and Procedures (PR.IP)
+severity_boost: {}
+sha256: f92a9f2e6ca59ee05d65d082fe1271d696487f9be41932b968a7d090cdf3b50c
+signature: 0OYLs0qw3lRnsyextmQVn0Bemye4q1lrbk1ejeRJr+0oqYi4wLGz14jTemyIUloMQG7Rrdk9MTmMC1zklNarBg==
+signed_by: siaga-official
+---
+
+# PR.IP-07 PR.IP-07
+
+> **Subcategory of:** Information Protection Processes and Procedures (PR.IP)
+
+## High-Level Description
+
+**Function:** PROTECT (PR)
+**Framework:** NIST Cybersecurity Framework v2.0
+
+Protection processes are improved
+
+## What to Check
+
+- [ ] Verify PR.IP-07 PR.IP-07 outcome is achieved
+- [ ] Review documentation and evidence for PR.IP-07
+- [ ] Assess organizational maturity for PROTECT function
+- [ ] Map to SP 800-53 controls that satisfy PR.IP-07
+
+## How to Test
+
+### Step 1: Identify Current Profile
+
+Determine the organization's current and target CSF profile tier for PR.IP-07.
+
+### Step 2: Assess Outcome Achievement
+
+```
+# Review organizational policies and procedures
+# Check for evidence that PR.IP-07 outcome is met
+# Interview stakeholders responsible for PROTECT
+```
+
+### Step 3: Map to Technical Controls
+
+Identify which SP 800-53 controls implement this CSF outcome and verify their operating effectiveness.
+
+## Tools
+
+| Tool            | Purpose                       | Usage                        |
+| --------------- | ----------------------------- | ---------------------------- |
+| cloud-audit-mcp | Assess cloud security posture | `cloud_audit_*` tools        |
+| Manual Review   | Policy and procedure review   | Interviews and documentation |
+
+## Remediation Guide
+
+Achieve the PR.IP-07 PR.IP-07 outcome:
+
+Protection processes are improved
+
+## Risk Assessment
+
+| Finding                                | Severity | Impact               |
+| -------------------------------------- | -------- | -------------------- |
+| PR.IP-07 PR.IP-07 outcome not achieved | High     | PROTECT Function Gap |
+
+## CWE Categories
+
+| CWE ID  | Title                   |
+| ------- | ----------------------- |
+| CWE-284 | Improper Access Control |
+
+## References
+
+- [NIST CSF v2.0](https://www.nist.gov/cyberframework)
+- [NIST CSF v2.0 Reference Tool](https://csrc.nist.gov/projects/cybersecurity-framework/filters#/csf/filters)
+- [CSF 2.0 Quick Start Guides](https://www.nist.gov/cyberframework/getting-started)
+
+## Checklist
+
+- [ ] Current profile tier assessed
+- [ ] Target profile tier defined
+- [ ] Gap analysis completed
+- [ ] SP 800-53 control mapping verified
+- [ ] Implementation roadmap exists

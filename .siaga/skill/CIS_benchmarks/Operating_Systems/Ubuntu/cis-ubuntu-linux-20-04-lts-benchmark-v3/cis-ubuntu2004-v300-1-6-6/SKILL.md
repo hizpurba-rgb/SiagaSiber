@@ -1,0 +1,79 @@
+---
+name: cis-ubuntu2004-v300-1-6-6
+description: "Ensure access to /etc/issue.net is configured"
+category: cis-networking
+version: "3.0.0"
+author: siaga-official
+tags: [cis, ubuntu, linux, ubuntu-20.04, banners, issue-net, permissions]
+cis_id: "1.6.6"
+cis_benchmark: "CIS Ubuntu Linux 20.04 LTS Benchmark v3.0.0"
+tech_stack: [ubuntu, linux]
+cwe_ids: []
+chains_with: []
+prerequisites: []
+severity_boost: {}
+sha256: f0541b559118dc64ba375ae9384b7b927f74f2203da4cc82df18a9956bf991ff
+signature: HbqWqalYuyGz8y9oHtufueQzQD1mx20iNSXLF5NI8gx1J+H3PwPnMu0P3lgDUmdUPQEbQi7iqThC6/Ynrh2hDA==
+signed_by: siaga-official
+---
+
+# 1.6.6 Ensure access to /etc/issue.net is configured (Automated)
+
+## Profile
+
+- Level 1 - Server
+- Level 1 - Workstation
+
+## Description
+
+The contents of the `/etc/issue.net` file are displayed to users prior to login for remote connections from configured services.
+
+## Rationale
+
+- IF - the `/etc/issue.net` file does not have the correct access configured, it could be modified by unauthorized users with incorrect or misleading information.
+
+## Audit Procedure
+
+### Command Line
+
+Run the following command and verify `Access` is `644` or more restrictive and `Uid` and `Gid` are both `0/root`:
+
+```bash
+# stat -Lc 'Access: (%#a/%A) Uid: ( %u/ %U) Gid: ( %g/ %G)' /etc/issue.net
+```
+
+```
+Access: (0644/-rw-r--r--) Uid: ( 0/ root) Gid: ( 0/ root)
+```
+
+## Expected Result
+
+Access: (0644/-rw-r--r--) Uid: ( 0/ root) Gid: ( 0/ root)
+
+## Remediation
+
+### Command Line
+
+Run the following commands to set mode, owner, and group on `/etc/issue.net`:
+
+```bash
+# chown root:root $(readlink -e /etc/issue.net)
+# chmod u-x,go-wx $(readlink -e /etc/issue.net)
+```
+
+## Default Value
+
+Access: (0644/-rw-r--r--) Uid: ( 0/ root) Gid: ( 0/ root)
+
+## References
+
+1. NIST SP 800-53 Rev. 5: AC-3, MP-2
+
+## CIS Controls
+
+| Controls Version | Control                                               | IG 1 | IG 2 | IG 3 |
+| ---------------- | ----------------------------------------------------- | ---- | ---- | ---- |
+| v8               | 3.3 Configure Data Access Control Lists               | \*   | \*   | \*   |
+| v7               | 14.6 Protect Information through Access Control Lists | \*   | \*   | \*   |
+
+MITRE ATT&CK Mappings: T1222, T1222.002 | TA0005 | M1022

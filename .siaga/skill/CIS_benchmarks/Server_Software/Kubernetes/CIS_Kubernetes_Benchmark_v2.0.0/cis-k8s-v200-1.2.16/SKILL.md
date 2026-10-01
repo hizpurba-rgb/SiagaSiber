@@ -1,0 +1,71 @@
+---
+name: cis-k8s-v200-1.2.16
+description: "Ensure that the --audit-log-path argument is set (Automated)"
+category: cis-k8s
+version: "2.0.0"
+author: siaga-official
+tags: [cis, kubernetes, control-plane, api-server, audit-logging, logging]
+cis_id: "1.2.16"
+cis_benchmark: "CIS Kubernetes Benchmark v2.0.0"
+tech_stack: [kubernetes]
+cwe_ids: []
+chains_with: []
+prerequisites: []
+severity_boost: {}
+sha256: 312dc4a84c2c13e10205b81b86ee9ccc7fa3378e0b87b559ea497166bffecae6
+signature: xTOpRZxV9XVChAyLskuz4L/VSO7XXni9392+zZKX0Bst+O6Yiy5p5MImRwKnBpcHZRVCulWVngJGHosbbDDNAg==
+signed_by: siaga-official
+---
+
+# 1.2.16 Ensure that the --audit-log-path argument is set (Automated)
+
+## Profile Applicability
+
+- Level 1 - Master Node
+
+## Description
+
+Enable auditing on the Kubernetes API Server and set the desired audit log path.
+
+## Rationale
+
+Auditing the Kubernetes API Server provides a security-relevant chronological set of records documenting the sequence of activities that have affected system by individual users, administrators or other components of the system. Even though currently, Kubernetes provides only basic audit capabilities, it should be enabled. You can enable it by setting an appropriate audit log path.
+
+## Impact
+
+None
+
+## Audit
+
+Run the following command on the Control Plane node:
+
+```bash
+ps -ef | grep kube-apiserver
+```
+
+Verify that the `--audit-log-path` argument is set as appropriate.
+
+## Remediation
+
+Edit the API server pod specification file `/etc/kubernetes/manifests/kube-apiserver.yaml` on the Control Plane node and set the `--audit-log-path` parameter to a suitable path and file where you would like audit logs to be written, for example:
+
+```
+--audit-log-path=/var/log/apiserver/audit.log
+```
+
+## Default Value
+
+By default, auditing is not enabled.
+
+## References
+
+1. https://kubernetes.io/docs/reference/command-line-tools-reference/kube-apiserver/
+2. https://kubernetes.io/docs/tasks/debug/debug-cluster/audit/
+3. https://github.com/kubernetes/enhancements/issues/22
+
+## CIS Controls
+
+| Controls Version | Control                    | IG 1 | IG 2 | IG 3 |
+| ---------------- | -------------------------- | ---- | ---- | ---- |
+| v8               | 8.2 Collect Audit Logs     | \*   | \*   | \*   |
+| v7               | 6.2 Activate audit logging | \*   | \*   | \*   |

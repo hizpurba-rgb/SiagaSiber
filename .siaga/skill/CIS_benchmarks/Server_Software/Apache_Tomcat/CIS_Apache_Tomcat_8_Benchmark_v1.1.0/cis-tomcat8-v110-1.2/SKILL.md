@@ -1,0 +1,69 @@
+---
+name: cis-tomcat8-v110-1.2
+description: "Disable Unused Connectors (Not Scored)"
+category: cis-tomcat
+version: "1.0.0"
+author: siaga-official
+tags: [cis, tomcat, linux, java, connectors, unused-services]
+cis_id: "1.2"
+cis_benchmark: "CIS Apache Tomcat 8 Benchmark v1.1.0"
+tech_stack: [linux, tomcat, java]
+cwe_ids: []
+chains_with: []
+prerequisites: []
+severity_boost: {}
+sha256: 9f20fddbbdc35614b9c38b95bd2feb994832ddce0b7b7709988407b9d70fd4c7
+signature: u5SrOOJm3orOSm5xSyGWBKwDEQ55KpPNoB5Rb471fuDoit2qSfiBGTMGKrELNM/VHWipQixUVwYdYSpbF0/fDg==
+signed_by: siaga-official
+---
+
+# Disable Unused Connectors (Not Scored)
+
+## Description
+
+The default installation of Tomcat includes connectors with default settings. These are traditionally set up for convenience. It is best to remove these connectors and enable only what is needed.
+
+## Rationale
+
+Improperly configured or unnecessarily installed `Connectors` may lead to a security exposure.
+
+## Audit Procedure
+
+Execute the following command to find configured `Connectors`. Ensure only those required are present and not commented out:
+
+```bash
+$ grep "Connector" $CATALINA_HOME/conf/server.xml
+```
+
+## Remediation
+
+Within the `$CATALINA_HOME/conf/server.xml`, remove, or comment out, every unused Connectors. For example, to disable an instance of the `HTTPConnector`, remove the following:
+
+```xml
+<Connector className="org.apache.catalina.connector.http.HttpConnector"
+...
+connectionTimeout="60000"/>
+```
+
+## Default Value
+
+`$CATALINA_HOME/conf/server.xml`, has the following connectors defined by default:
+
+- A non-SSL HTTP Connector bound to port 8080
+- An AJP Connector bound to port 8009
+
+## References
+
+1. https://tomcat.apache.org/tomcat-8.0-doc/security-howto.html#Connectors
+2. https://tomcat.apache.org/tomcat-8.5-doc/security-howto.html#Connectors
+
+## CIS Controls
+
+**v7:**
+
+- 9.2 Ensure Only Approved Ports, Protocols and Services Are Running
+  - Ensure that only network ports, protocols, and services listening on a system with validated business needs, are running on each system.
+
+## Profile Applicability
+
+- Level 2

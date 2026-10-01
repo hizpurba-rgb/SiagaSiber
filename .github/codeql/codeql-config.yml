@@ -1,0 +1,13 @@
+name: "SiagaSiber CodeQL Config"
+
+# Post-exploit tooling directories contain offensive security payloads that
+# intentionally handle secrets, credentials, and perform actions that static
+# analyzers flag as vulnerabilities. These are features, not bugs.
+paths-ignore:
+  - packages/siaga/data/awshook
+  - packages/siaga/data/azurehook
+  - packages/siaga/data/cipipe
+  - packages/siaga/data/ebpf
+  - packages/siaga/data/kubehook
+  - packages/siaga/data/machook
+  - packages/siaga/data/winhook

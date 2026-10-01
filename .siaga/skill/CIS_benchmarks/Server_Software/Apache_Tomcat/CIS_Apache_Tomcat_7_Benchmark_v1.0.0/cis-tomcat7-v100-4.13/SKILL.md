@@ -1,0 +1,49 @@
+---
+name: cis-tomcat7-v100-4.13
+description: "Restrict access to Tomcat tomcat-users.xml"
+category: cis-tomcat
+version: "1.0.0"
+author: siaga-official
+tags: [cis, tomcat, tomcat-7, file-permissions]
+cis_id: "4.13"
+cis_benchmark: "CIS Apache Tomcat 7 Benchmark v1.0.0"
+tech_stack: [tomcat, java]
+cwe_ids: []
+chains_with: []
+prerequisites: []
+severity_boost: {}
+sha256: 13f96575e17854bb7d0e85f46c484ea0de0e7bc9190d1ad56d54434b1dd99e2f
+signature: Gzt0kUVxOUeYJ4BOjjKJVYUCBaPst+G73iIK4xvTV9dDaMv5duOKM2MC4bZ+X80Rej1M4YpBiEf2zETmdMJsBw==
+signed_by: siaga-official
+---
+
+# CIS Apache Tomcat 7 - 4.13 Restrict access to Tomcat tomcat-users.xml (Scored)
+
+## Profile Applicability
+
+- Level 1
+
+## Description
+
+Restrict access to Tomcat tomcat-users.xml
+
+## Rationale
+
+See CIS Apache Tomcat 7 Benchmark v1.0.0 for detailed rationale.
+
+## Audit Procedure
+
+Refer to CIS Apache Tomcat 7 Benchmark v1.0.0 Section 4.13 for audit commands.
+
+## Remediation
+
+Refer to CIS Apache Tomcat 7 Benchmark v1.0.0 Section 4.13 for remediation steps.
+
+## References
+
+- CIS Apache Tomcat 7 Benchmark v1.0.0
+
+## Assessment Status
+
+- **Scored**
+- **Profile**: Level 1

@@ -1,0 +1,69 @@
+---
+name: cis-k8s-v200-1.2.15
+description: "Ensure that the --profiling argument is set to false (Automated)"
+category: cis-k8s
+version: "2.0.0"
+author: siaga-official
+tags: [cis, kubernetes, control-plane, api-server, profiling, attack-surface]
+cis_id: "1.2.15"
+cis_benchmark: "CIS Kubernetes Benchmark v2.0.0"
+tech_stack: [kubernetes]
+cwe_ids: []
+chains_with: []
+prerequisites: []
+severity_boost: {}
+sha256: 3cc88de757803d0ffcf4c0bd3812f3d4717c72a875ae308f9adfa8750f168fa8
+signature: gvXtq5WuvLaV7P0ZPTNyUDj0z/syDjZpEXFTUIFN7v/nuNOoD6b6aGsUO8Y5MtKXctaUfj3Dzy4P3L1OnQlWDw==
+signed_by: siaga-official
+---
+
+# 1.2.15 Ensure that the --profiling argument is set to false (Automated)
+
+## Profile Applicability
+
+- Level 1 - Master Node
+
+## Description
+
+Disable profiling, if not needed.
+
+## Rationale
+
+Profiling allows for the identification of specific performance bottlenecks. It generates a significant amount of program data that could potentially be exploited to uncover system and program details. If you are not experiencing any bottlenecks and do not need the profiler for troubleshooting purposes, it is recommended to turn it off to reduce the potential attack surface.
+
+## Impact
+
+Profiling information would not be available.
+
+## Audit
+
+Run the following command on the Control Plane node:
+
+```bash
+ps -ef | grep kube-apiserver
+```
+
+Verify that the `--profiling` argument is set to `false`.
+
+## Remediation
+
+Edit the API server pod specification file `/etc/kubernetes/manifests/kube-apiserver.yaml` on the Control Plane node and set the below parameter.
+
+```
+--profiling=false
+```
+
+## Default Value
+
+By default, profiling is enabled.
+
+## References
+
+1. https://kubernetes.io/docs/reference/command-line-tools-reference/kube-apiserver/
+
+## CIS Controls
+
+| Controls Version | Control                                              | IG 1 | IG 2 | IG 3 |
+| ---------------- | ---------------------------------------------------- | ---- | ---- | ---- |
+| v8               | 8 Audit Log Management                               |      |      |      |
+| v7               | 6 Maintenance, Monitoring and Analysis of Audit Logs |      |      |      |

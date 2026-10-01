@@ -1,0 +1,55 @@
+---
+name: cis-gcp-cos-6.2.2
+description: 'Ensure no legacy "+" entries exist in /etc/passwd'
+category: cis-gcp-cos
+version: "1.2.0"
+author: siaga-official
+tags: [cis, gcp, container-optimized-os, user-accounts, legacy-entries]
+cis_id: "6.2.2"
+cis_benchmark: "CIS Google Container-Optimized OS Benchmark v1.2.0"
+tech_stack: [gcp, linux]
+cwe_ids: []
+chains_with: []
+prerequisites: []
+severity_boost: {}
+sha256: de6847d988bff0a0b83b58be182ef0e81cf1e2b24e63bf5cd38dbead8a9acb4d
+signature: pUkNOF8EDSB9klnQ+4llzNFydFu8UoPTJEJgyFlK4GjI8L32729+sEpiulxDnQ5zqnl96ZZ6BPq5WngTiOSGBA==
+signed_by: siaga-official
+---
+
+# 6.2.2 Ensure no legacy "+" entries exist in /etc/passwd (Automated)
+
+## Description
+
+The character + in various files used to be markers for systems to insert data from NIS maps at a certain point in a system configuration file. These entries are no longer required on most systems, but may exist in files that have been imported from other platforms.
+
+## Rationale
+
+These entries may provide an avenue for attackers to gain privileged access on the system.
+
+## Audit Procedure
+
+Run the following command and verify that no output is returned:
+
+```bash
+# grep '^\+:' /etc/passwd
+```
+
+## Expected Result
+
+No output should be returned.
+
+## Remediation
+
+Remove any legacy '+' entries from `/etc/passwd` if they exist.
+
+## CIS Controls
+
+| Controls Version | Control                                            | IG 1 | IG 2 | IG 3 |
+| ---------------- | -------------------------------------------------- | ---- | ---- | ---- |
+| v8               | 5.6 Centralize Account Management                  |      | x    | x    |
+| v7               | 16.2 Configure Centralized Point of Authentication |      | x    | x    |
+
+## Profile
+
+- Level 1 - Server

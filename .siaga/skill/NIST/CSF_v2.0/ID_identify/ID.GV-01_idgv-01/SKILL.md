@@ -1,0 +1,103 @@
+---
+name: "ID.GV-01_idgv-01"
+description: "Organizational cybersecurity policy is established and communicated"
+category: "information-gathering"
+version: "2.0"
+author: "siaga-official"
+tags:
+  - nist
+  - csf
+  - v2.0
+  - id-gv-01
+  - id
+  - subcategory
+tech_stack:
+  - aws
+  - azure
+  - gcp
+  - network
+cwe_ids:
+  - CWE-200
+chains_with: []
+prerequisites:
+  - Governance (ID.GV)
+severity_boost: {}
+sha256: 159dd190d5559800704461d779c7a52448dc1c294a2a6043d631c2172f33a6e6
+signature: SOkGS2dGcxW4GR2TJMK0UJUiOM4VhGtta+1ui5bzKwpGmAqHTdPoF3gECyPvilaV87szwuPKImerop/lHN6GAA==
+signed_by: siaga-official
+---
+
+# ID.GV-01 ID.GV-01
+
+> **Subcategory of:** Governance (ID.GV)
+
+## High-Level Description
+
+**Function:** IDENTIFY (ID)
+**Framework:** NIST Cybersecurity Framework v2.0
+
+Organizational cybersecurity policy is established and communicated
+
+## What to Check
+
+- [ ] Verify ID.GV-01 ID.GV-01 outcome is achieved
+- [ ] Review documentation and evidence for ID.GV-01
+- [ ] Assess organizational maturity for IDENTIFY function
+- [ ] Map to SP 800-53 controls that satisfy ID.GV-01
+
+## How to Test
+
+### Step 1: Identify Current Profile
+
+Determine the organization's current and target CSF profile tier for ID.GV-01.
+
+### Step 2: Assess Outcome Achievement
+
+```
+# Review organizational policies and procedures
+# Check for evidence that ID.GV-01 outcome is met
+# Interview stakeholders responsible for IDENTIFY
+```
+
+### Step 3: Map to Technical Controls
+
+Identify which SP 800-53 controls implement this CSF outcome and verify their operating effectiveness.
+
+## Tools
+
+| Tool            | Purpose                       | Usage                        |
+| --------------- | ----------------------------- | ---------------------------- |
+| cloud-audit-mcp | Assess cloud security posture | `cloud_audit_*` tools        |
+| Manual Review   | Policy and procedure review   | Interviews and documentation |
+
+## Remediation Guide
+
+Achieve the ID.GV-01 ID.GV-01 outcome:
+
+Organizational cybersecurity policy is established and communicated
+
+## Risk Assessment
+
+| Finding                                | Severity | Impact                |
+| -------------------------------------- | -------- | --------------------- |
+| ID.GV-01 ID.GV-01 outcome not achieved | Medium   | IDENTIFY Function Gap |
+
+## CWE Categories
+
+| CWE ID  | Title                             |
+| ------- | --------------------------------- |
+| CWE-200 | Exposure of Sensitive Information |
+
+## References
+
+- [NIST CSF v2.0](https://www.nist.gov/cyberframework)
+- [NIST CSF v2.0 Reference Tool](https://csrc.nist.gov/projects/cybersecurity-framework/filters#/csf/filters)
+- [CSF 2.0 Quick Start Guides](https://www.nist.gov/cyberframework/getting-started)
+
+## Checklist
+
+- [ ] Current profile tier assessed
+- [ ] Target profile tier defined
+- [ ] Gap analysis completed
+- [ ] SP 800-53 control mapping verified
+- [ ] Implementation roadmap exists
