@@ -1,4 +1,6 @@
 import { Log } from "../util/log"
+import { Config } from "../config/config"
+import { Discovery } from "./discovery"
 import { Skill } from "./skill"
 
 export namespace SkillIndex {
@@ -82,8 +84,36 @@ export namespace SkillIndex {
       entries.set(entry.name, entry)
       indexEntry(entry)
     }
-    log.info("skill index built", { count: entries.size })
+
+    // Registry metadata so search/list/suggest cover the whole registry,
+    // not just what happens to be cached. The file is fetched on first use.
+    const remote = await registry()
+    for (const skill of remote) {
+      if (entries.has(skill.name)) continue
+      const entry = toEntry({
+        name: skill.name,
+        description: skill.description,
+        location: "",
+        content: "",
+        verified: skill.verified as Skill.Info["verified"],
+        category: skill.category,
+        owasp_id: skill.owasp_id,
+        tags: skill.tags,
+        tech_stack: skill.tech_stack,
+        cwe_ids: skill.cwe_ids,
+      })
+      entries.set(entry.name, entry)
+      indexEntry(entry)
+    }
+
+    log.info("skill index built", { count: entries.size, cached: skills.length, remote: remote.length })
     initialized = true
+  }
+
+  async function registry(): Promise<Discovery.IndexSkill[]> {
+    const config = await Config.get()
+    const skills = await Promise.all((config.skills?.urls ?? []).map((url) => Discovery.index(url).catch(() => [])))
+    return skills.flat().filter((skill) => typeof skill?.description === "string")
   }
 
   export function get(name: string): Entry | undefined {

@@ -201,7 +201,8 @@ export const SkillTool = Tool.define("skill", async (ctx) => {
       // Default: load action
       if (!params.name) throw new Error("Skill name required for load action")
 
-      const skill = await Skill.get(params.name)
+      // Skills are pulled from the registry on first use, not pre-downloaded
+      const skill = (await Skill.get(params.name)) ?? (await Skill.fetch(params.name))
       if (!skill) {
         const available = accessibleSkills.map((s) => s.name).join(", ")
         throw new Error(`Skill "${params.name}" not found. Available: ${available || "none"}`)

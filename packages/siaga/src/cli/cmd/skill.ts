@@ -240,6 +240,7 @@ const SkillInstallCommand = cmd({
 
     const spinner = prompts.spinner()
     spinner.start(`Fetching from ${args.url}`)
+    await Discovery.index(args.url, { refresh: true })
     const dirs = await Discovery.pull(args.url)
     spinner.stop(`Downloaded ${dirs.length} skill(s)`)
 

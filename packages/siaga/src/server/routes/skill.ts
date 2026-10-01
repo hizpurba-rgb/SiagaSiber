@@ -276,6 +276,7 @@ export const SkillRoutes = lazy(() =>
       ),
       async (c) => {
         const { url } = c.req.valid("json")
+        await Discovery.index(url, { refresh: true })
         const dirs = await Discovery.pull(url)
         const names = dirs.map((d) => d.split("/").pop() ?? d)
         return c.json({ installed: names })

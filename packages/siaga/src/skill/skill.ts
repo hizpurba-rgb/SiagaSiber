@@ -12,6 +12,7 @@ import { Flag } from "@/flag/flag"
 import { Bus } from "@/bus"
 import { Session } from "@/session"
 import { Discovery } from "./discovery"
+import { SkillIndex } from "./index-engine"
 import { SkillSigning } from "./signing"
 
 export namespace Skill {
@@ -67,81 +68,86 @@ export namespace Skill {
   const SIAGA_SKILL_GLOB = new Bun.Glob("{skill,skills}/**/SKILL.md")
   const SKILL_GLOB = new Bun.Glob("**/SKILL.md")
 
+  const toStringArray = (v: unknown): string[] | undefined =>
+    Array.isArray(v) ? v.filter((x): x is string => typeof x === "string") : undefined
+
+  async function parse(match: string): Promise<Info | undefined> {
+    const md = await ConfigMarkdown.parse(match).catch((err) => {
+      const message = ConfigMarkdown.FrontmatterError.isInstance(err)
+        ? err.data.message
+        : `Failed to parse skill ${match}`
+      Bus.publish(Session.Event.Error, { error: new NamedError.Unknown({ message }).toObject() })
+      log.error("failed to load skill", { skill: match, err })
+      return undefined
+    })
+
+    if (!md) return
+
+    const parsed = Info.pick({ name: true, description: true }).safeParse(md.data)
+    if (!parsed.success) return
+
+    const raw = md.data as Record<string, unknown>
+    const verified = await SkillSigning.verify({
+      content: await Bun.file(match).text(),
+      sha256: typeof raw.sha256 === "string" ? raw.sha256 : undefined,
+      signature: typeof raw.signature === "string" ? raw.signature : undefined,
+      signed_by: typeof raw.signed_by === "string" ? raw.signed_by : undefined,
+    })
+
+    if (verified === "tampered") {
+      log.warn("skill integrity check failed, skipping", { name: parsed.data.name, path: match })
+      Bus.publish(Session.Event.Error, {
+        error: new NamedError.Unknown({
+          message: `Skill "${parsed.data.name}" failed integrity check and was not loaded`,
+        }).toObject(),
+      })
+      return
+    }
+
+    return {
+      name: parsed.data.name,
+      description: parsed.data.description,
+      location: match,
+      content: md.content,
+      verified,
+      version: typeof raw.version === "string" ? raw.version : undefined,
+      author: typeof raw.author === "string" ? raw.author : undefined,
+      tags: toStringArray(raw.tags),
+      sha256: typeof raw.sha256 === "string" ? raw.sha256 : undefined,
+      signature: typeof raw.signature === "string" ? raw.signature : undefined,
+      signed_by: typeof raw.signed_by === "string" ? raw.signed_by : undefined,
+      category: typeof raw.category === "string" ? raw.category : undefined,
+      owasp_id: typeof raw.owasp_id === "string" ? raw.owasp_id : undefined,
+      tech_stack: toStringArray(raw.tech_stack),
+      cwe_ids: toStringArray(raw.cwe_ids),
+      chains_with: toStringArray(raw.chains_with),
+      prerequisites: toStringArray(raw.prerequisites),
+      severity_boost:
+        typeof raw.severity_boost === "object" && raw.severity_boost !== null && !Array.isArray(raw.severity_boost)
+          ? (raw.severity_boost as Record<string, string>)
+          : undefined,
+    }
+  }
+
   export const state = Instance.state(async () => {
     const skills: Record<string, Info> = {}
     const dirs = new Set<string>()
 
     const addSkill = async (match: string) => {
-      const md = await ConfigMarkdown.parse(match).catch((err) => {
-        const message = ConfigMarkdown.FrontmatterError.isInstance(err)
-          ? err.data.message
-          : `Failed to parse skill ${match}`
-        Bus.publish(Session.Event.Error, { error: new NamedError.Unknown({ message }).toObject() })
-        log.error("failed to load skill", { skill: match, err })
-        return undefined
-      })
-
-      if (!md) return
-
-      const parsed = Info.pick({ name: true, description: true }).safeParse(md.data)
-      if (!parsed.success) return
+      const info = await parse(match)
+      if (!info) return
 
       // Warn on duplicate skill names
-      if (skills[parsed.data.name]) {
+      if (skills[info.name]) {
         log.debug("duplicate skill name", {
-          name: parsed.data.name,
-          existing: skills[parsed.data.name].location,
+          name: info.name,
+          existing: skills[info.name].location,
           duplicate: match,
         })
       }
 
       dirs.add(path.dirname(match))
-
-      const raw = md.data as Record<string, unknown>
-      const fileContent = await Bun.file(match).text()
-      const verified = await SkillSigning.verify({
-        content: fileContent,
-        sha256: typeof raw.sha256 === "string" ? raw.sha256 : undefined,
-        signature: typeof raw.signature === "string" ? raw.signature : undefined,
-        signed_by: typeof raw.signed_by === "string" ? raw.signed_by : undefined,
-      })
-
-      if (verified === "tampered") {
-        log.warn("skill integrity check failed, skipping", { name: parsed.data.name, path: match })
-        Bus.publish(Session.Event.Error, {
-          error: new NamedError.Unknown({
-            message: `Skill "${parsed.data.name}" failed integrity check and was not loaded`,
-          }).toObject(),
-        })
-        return
-      }
-
-      const toStringArray = (v: unknown): string[] | undefined =>
-        Array.isArray(v) ? v.filter((x): x is string => typeof x === "string") : undefined
-
-      skills[parsed.data.name] = {
-        name: parsed.data.name,
-        description: parsed.data.description,
-        location: match,
-        content: md.content,
-        verified,
-        version: typeof raw.version === "string" ? raw.version : undefined,
-        author: typeof raw.author === "string" ? raw.author : undefined,
-        tags: toStringArray(raw.tags),
-        sha256: typeof raw.sha256 === "string" ? raw.sha256 : undefined,
-        signature: typeof raw.signature === "string" ? raw.signature : undefined,
-        signed_by: typeof raw.signed_by === "string" ? raw.signed_by : undefined,
-        category: typeof raw.category === "string" ? raw.category : undefined,
-        owasp_id: typeof raw.owasp_id === "string" ? raw.owasp_id : undefined,
-        tech_stack: toStringArray(raw.tech_stack),
-        cwe_ids: toStringArray(raw.cwe_ids),
-        chains_with: toStringArray(raw.chains_with),
-        prerequisites: toStringArray(raw.prerequisites),
-        severity_boost:
-          typeof raw.severity_boost === "object" && raw.severity_boost !== null && !Array.isArray(raw.severity_boost)
-            ? (raw.severity_boost as Record<string, string>)
-            : undefined,
-      }
+      skills[info.name] = info
     }
 
     const scanExternal = async (root: string, scope: "global" | "project") => {
@@ -242,19 +248,17 @@ export namespace Skill {
       }
     }
 
-    // Download and load skills from URLs
-    for (const url of config.skills?.urls ?? []) {
-      const list = await Discovery.pull(url)
-      for (const dir of list) {
-        dirs.add(dir)
-        for await (const match of SKILL_GLOB.scan({
-          cwd: dir,
-          absolute: true,
-          onlyFiles: true,
-          followSymlinks: true,
-        })) {
-          await addSkill(match)
-        }
+    // Skills already downloaded from URLs. Nothing is fetched here on purpose:
+    // a registry holds thousands of skills, so they are pulled on demand instead.
+    for (const dir of await Discovery.cached()) {
+      dirs.add(dir)
+      for await (const match of SKILL_GLOB.scan({
+        cwd: dir,
+        absolute: true,
+        onlyFiles: true,
+        followSymlinks: true,
+      })) {
+        await addSkill(match)
       }
     }
 
@@ -266,6 +270,38 @@ export namespace Skill {
 
   export async function get(name: string) {
     return state().then((x) => x.skills[name])
+  }
+
+  /**
+   * Load a skill, downloading it from the configured registries first if it is
+   * not cached yet. Registries hold thousands of skills, so nothing is
+   * pre-downloaded and every skill is fetched on first use.
+   */
+  export async function fetch(name: string): Promise<Info | undefined> {
+    const local = await get(name)
+    if (local) return local
+
+    for (const url of (await Config.get()).skills?.urls ?? []) {
+      const dirs = await Discovery.pull(url, [name]).catch((err) => {
+        log.error("failed to fetch skill", { name, url, err })
+        return []
+      })
+
+      for (const dir of dirs) {
+        const info = await parse(path.join(dir, "SKILL.md"))
+        if (!info) continue
+
+        const current = await state()
+        current.skills[info.name] = info
+        if (!current.dirs.includes(path.dirname(info.location))) current.dirs.push(path.dirname(info.location))
+
+        await SkillIndex.rebuild()
+        log.info("skill fetched from registry", { name: info.name, url })
+        return info
+      }
+    }
+
+    return undefined
   }
 
   export async function all() {
@@ -371,12 +407,8 @@ export namespace Skill {
     }
 
     // Downloaded skills from URLs
-    for (const url of config.skills?.urls ?? []) {
-      const list = await Discovery.pull(url).catch(() => [])
-      if (!list) continue
-      for (const dir of list) {
-        dirs.add(dir)
-      }
+    for (const dir of await Discovery.cached()) {
+      dirs.add(dir)
     }
 
     return Array.from(dirs)
