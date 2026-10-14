@@ -1,7 +1,7 @@
 {
   "name": "@siaga-siber/app",
   "version": "1.1.16",
-  "description": "",
+  "description": "SiagaSiber web UI — SolidJS interface for the SiagaSiber agent",
   "type": "module",
   "exports": {
     ".": "./src/index.ts",
