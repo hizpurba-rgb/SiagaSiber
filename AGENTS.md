@@ -1,3 +1,31 @@
+# Global Instructions — all agents, all projects
+
+## How to apply
+
+- **Caveman** (`caveman` skill): load it, then keep that output style for every
+  response in the session. Level persists until the user says "stop caveman" or
+  "normal mode". Drop the compression for destructive-action confirmations and
+  security warnings; resume after.
+- **Karpathy** (`karpathy-guidelines` skill): load it before writing, reviewing,
+  or refactoring code. Obey its rules: think before coding, minimum code,
+  surgical changes, goal-driven verification, read before write, match repo
+  conventions, fail loud, surface token-budget breaches.
+- **Best practices**: pick the `best-practices/*` skills that match the stack in
+  play (for example `nextjs-developer`, `react-expert`, `secure-code-guardian`,
+  `postgres-pro`, `test-master`) and follow them while coding.
+- **UI UX Pro Max** (`ui-ux-pro-max` skill): load it before any frontend or
+  design work — layouts, components, styling, colour, typography, interaction
+  states, accessibility.
+- **Impeccable** (`impeccable` skill, installed globally at
+  `~/.kilocode/skills/impeccable/`): load it before any frontend, UI, or design
+  work — design, redesign, critique, audit, polish, layout, typography, colour,
+  motion, accessibility, theming, design tokens. Its own scope excludes
+  backend-only tasks. After loading, read the playbook for the request's
+  sub-command, then run the context launcher once per session
+  (`scripts/impeccable context`; on Windows without `sh` use
+  `scripts/impeccable.cmd`) before touching UI files. Hold the same quality
+  floor on every other deliverable: production-grade, verified, no unfinished
+  edges, no silent skips, no "should work" claims.
 - To regenerate the JavaScript SDK, run `./packages/sdk/js/script/build.ts`.
 - ALWAYS USE PARALLEL TOOLS WHEN APPLICABLE.
 - The default branch in this repo is `dev`.

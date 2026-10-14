@@ -43,39 +43,39 @@ export function applyGlobalEvent(input: {
 function cleanupSessionCaches(store: Store<State>, setStore: SetStoreFunction<State>, sessionID: string) {
   if (!sessionID) return
   const hasAny =
-    store.message[sessionID] !== undefined ||
-    store.session_diff[sessionID] !== undefined ||
-    store.todo[sessionID] !== undefined ||
-    store.permission[sessionID] !== undefined ||
-    store.question[sessionID] !== undefined ||
-    store.session_status[sessionID] !== undefined ||
-    store.request[sessionID] !== undefined ||
-    store.web_credential[sessionID] !== undefined ||
-    store.web_role[sessionID] !== undefined ||
-    store.web_object[sessionID] !== undefined ||
-    store.web_function[sessionID] !== undefined
+    store.message?.[sessionID] !== undefined ||
+    store.session_diff?.[sessionID] !== undefined ||
+    store.todo?.[sessionID] !== undefined ||
+    store.permission?.[sessionID] !== undefined ||
+    store.question?.[sessionID] !== undefined ||
+    store.session_status?.[sessionID] !== undefined ||
+    store.request?.[sessionID] !== undefined ||
+    store.web_credential?.[sessionID] !== undefined ||
+    store.web_role?.[sessionID] !== undefined ||
+    store.web_object?.[sessionID] !== undefined ||
+    store.web_function?.[sessionID] !== undefined
   if (!hasAny) return
   setStore(
     produce((draft) => {
-      const messages = draft.message[sessionID]
+      const messages = draft.message?.[sessionID]
       if (messages) {
         for (const message of messages) {
           const id = message?.id
           if (!id) continue
-          delete draft.part[id]
+          if (draft.part) delete draft.part[id]
         }
       }
-      delete draft.message[sessionID]
-      delete draft.session_diff[sessionID]
-      delete draft.todo[sessionID]
-      delete draft.permission[sessionID]
-      delete draft.question[sessionID]
-      delete draft.session_status[sessionID]
-      delete draft.request[sessionID]
-      delete draft.web_credential[sessionID]
-      delete draft.web_role[sessionID]
-      delete draft.web_object[sessionID]
-      delete draft.web_function[sessionID]
+      if (draft.message) delete draft.message[sessionID]
+      if (draft.session_diff) delete draft.session_diff[sessionID]
+      if (draft.todo) delete draft.todo[sessionID]
+      if (draft.permission) delete draft.permission[sessionID]
+      if (draft.question) delete draft.question[sessionID]
+      if (draft.session_status) delete draft.session_status[sessionID]
+      if (draft.request) delete draft.request[sessionID]
+      if (draft.web_credential) delete draft.web_credential[sessionID]
+      if (draft.web_role) delete draft.web_role[sessionID]
+      if (draft.web_object) delete draft.web_object[sessionID]
+      if (draft.web_function) delete draft.web_function[sessionID]
     }),
   )
 }

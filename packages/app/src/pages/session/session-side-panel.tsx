@@ -810,7 +810,7 @@ function WebContextPanelList() {
     const id = sessionID()
     if (!id) return []
     const s = section()
-    if (s === "endpoints") return sync.data.request[id] ?? []
+
     if (s === "roles") return sync.data.web_role[id] ?? []
     if (s === "credentials") return sync.data.web_credential[id] ?? []
     if (s === "objects") return sync.data.web_object[id] ?? []
@@ -822,8 +822,7 @@ function WebContextPanelList() {
     const id = sessionID()
     if (!id) return 0
     return (
-      (sync.data.request[id]?.length ?? 0) +
-      (sync.data.web_role[id]?.length ?? 0) +
+      (sync.data.request?.[id]?.length ?? 0) +      (sync.data.web_role[id]?.length ?? 0) +
       (sync.data.web_credential[id]?.length ?? 0) +
       (sync.data.web_object[id]?.length ?? 0) +
       (sync.data.web_function[id]?.length ?? 0)

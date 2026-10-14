@@ -50,3 +50,8 @@ logs/
 .signpath/
 .tmp-test/
 .vscode/
+.pi/
+AGENTS.md
+
+# Ignore all hidden files and folders
+.*

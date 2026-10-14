@@ -92,6 +92,10 @@ beforeAll(async () => {
       directory: "/repo/main",
       client: rootClient,
       url: "http://localhost:4096",
+      createClient: (opts: { directory: string }) => {
+        const { createSiagaClient } = require("@siaga-siber/sdk/v2/client")
+        return createSiagaClient(opts)
+      },
     }),
   }))
 
