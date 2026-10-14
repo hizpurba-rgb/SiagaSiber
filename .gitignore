@@ -6,6 +6,8 @@ node_modules
 .worktrees
 .sst
 .wrangler
+.env
+
 
 # Merge/patch residue
 *.orig
@@ -38,3 +40,13 @@ logs/
 
 # Merge/patch residue
 *.orig
+
+.claude/
+.freebuff/
+.github/
+.husky/
+.kilo/
+.siaga/
+.signpath/
+.tmp-test/
+.vscode/
