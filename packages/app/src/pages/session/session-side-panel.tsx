@@ -869,7 +869,11 @@ function WebContextPanelList() {
             <div class="flex items-start gap-2 px-2 py-1 rounded">
               <Show when={section() === "endpoints"}>
                 <div class="flex flex-col w-full gap-0.5">
-                  <div class="flex items-center gap-1.5 cursor-pointer" onClick={() => toggleEndpoint(v)}>
+                  <button
+                    type="button"
+                    class="flex items-center gap-1.5 cursor-pointer appearance-none bg-transparent p-0 text-left w-full"
+                    onClick={() => toggleEndpoint(v)}
+                  >
                     <span class="text-11-regular text-text-muted shrink-0">
                       {expandedEp()[v.id as string] ? "▾" : "▸"}
                     </span>
@@ -879,7 +883,7 @@ function WebContextPanelList() {
                     <Show when={v.operation as string | undefined}>
                       <span class="text-12-regular text-text-muted shrink-0">· {v.operation as string}</span>
                     </Show>
-                  </div>
+                  </button>
                   <Show when={expandedEp()[v.id as string]}>
                     <div class="flex flex-col gap-0.5 pl-5">
                       <For each={obsTree()[v.id as string]?.params ?? []}>
