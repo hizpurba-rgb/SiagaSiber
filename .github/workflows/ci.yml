@@ -29,5 +29,11 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: ./.github/actions/setup-bun
+      - name: Configure git identity
+        # Some tests create throwaway git repos and commit into them; a fresh
+        # CI runner has no git user configured, so `git commit` would exit 128.
+        run: |
+          git config --global user.email "ci@siagasiber.local"
+          git config --global user.name "SiagaSiber CI"
       - name: Run tests
         run: bun turbo test
