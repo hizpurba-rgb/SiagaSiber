@@ -32,17 +32,33 @@ If you're unsure whether a PR would be accepted, look for issues labeled:
 
 ### Requirements
 
+- [Git](https://git-scm.com/)
 - [Bun](https://bun.sh/) 1.3+
-- Docker (for Bolt/Kali MCP development)
+- Docker (optional — only for Bolt/Kali MCP development)
 
 ### Setup
 
 ```bash
-git clone https://github.com/siagasiber/SiagaSiber.git
+git clone https://github.com/urtir/SiagaSiber.git
 cd SiagaSiber
 bun install
 bun dev
 ```
+
+#### Windows
+
+Install the prerequisites, then open a **new** terminal (so `git` and `bun` are on your `PATH`) before cloning:
+
+```powershell
+# Bun
+powershell -c "irm bun.sh/install.ps1 | iex"
+# Git (via winget, built into Windows)
+winget install --id Git.Git -e
+```
+
+The `install` script and `curl … install.sh` are for installing a release
+binary, not for developing from source — use the `git clone` + `bun install`
+steps above instead.
 
 ### Running Against a Different Directory
 
