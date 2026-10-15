@@ -1,0 +1,33 @@
+name: CI
+
+on:
+  push:
+    branches: [main, dev]
+  pull_request:
+    branches: [main, dev]
+
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  typecheck:
+    name: Typecheck
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/setup-bun
+      - name: Typecheck
+        run: bun turbo typecheck
+
+  test:
+    name: Test
+    runs-on: ubuntu-latest
+    env:
+      CI: "true"
+      SIAGA_DISABLE_SHARE: "true"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/setup-bun
+      - name: Run tests
+        run: bun turbo test
